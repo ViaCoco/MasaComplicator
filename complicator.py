@@ -50,11 +50,27 @@ def internet_score(happy_with_speed):
 	else:
 		return 3
 
+def job_score(satisfaction):
+	if satisfaction == "Love":
+		return 0
+	elif satisfaction == "Hate":
+		return 3
+	else:
+		return 1
+
+def temperature_score(degrees):
+	if degrees > 5:
+		return 1
+	elif degrees > 25:
+		return 0
+	else:
+		return 3
+
 
 def calculate_complexity(score_sum):
-	if score_sum < 10:
+	if score_sum < 12:
 		return "You have it easy!"
-	elif score_sum < 16:
+	elif score_sum < 18:
 		return "Your life is complicated!"
 	else: 
 		return "It's hard to be you!"
@@ -97,29 +113,38 @@ score_bus = bus_score(missed_busses)
 print score_bus
 
 internet_speed = raw_input("Are you happy with your internet speed? Yes/No/Somewhat")
-#print internet_score(speed)
+#print internet_score(internet_speed)
 
 score_internet = internet_score(internet_speed)
 print score_internet
 
-score = score_age + score_fb + score_family + score_deadlines + score_money + score_bus + score_internet
+score_internet = internet_score(internet_speed)
+print score_internet
+
+job_satisfaction = raw_input("Are you satisfied with your career? Do you like your job? Love/Hate/Meh")
+#print job_score(job_satisfaction)
+
+score_job = job_score(job_satisfaction)
+print score_job
+
+temperature = raw_input("And finally...How many degrees Celius is outside? You know it matters!")
+#print temperature_score(temperature)
+
+score_temperature = temperature_score(temperature)
+print score_temperature
+
+score = score_age + score_fb + score_family + score_deadlines + score_money + score_bus + score_internet + score_job + score_temperature
 result = calculate_complexity(score)
 print score
 print result
 
 
-
-
-
-
-
-import datetime
-
-datetime = datetime.datetime.now
+#import datetime
+#datetime = datetime.datetime.now
 #deadlines = raw_input("Do you have a deadline aproaching? Yes/No")-------------
 #missed_busses = raw_input("Do you often run after the bus and miss it anyway? Yes/No")------------
 #money = raw_input("How much money do you have in your bank account?")-----------
-#job = ["loving it", "hating it", "don't know"]
+#job = ["loving it", "hating it", "don't know"]------------
 #family_members = raw_input("How many family members do you have?")-------------
 #temperature = raw_input("How many degrees Celius is outside?")
 #internet_speed = raw_input("Are you happy with your internet speed?")------------
